@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-const api = require('./Develop/public/assets/routes/indexRoute');
+const api = require('./public/assets/routes/indexRoute');
 
 const PORT = process.env.port || 3001;
 const app = express();
@@ -11,16 +11,16 @@ app.use('/api', api);
 
 app.use(express.static('public'));
 
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '/Develop/public/index.html'))
-});
+// app.get('/', (req, res) => {
+//     res.sendFile(path.join(__dirname, '/public/index.html'))
+// });
 
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '/Develop/public/index.html'))
+    res.sendFile(path.join(__dirname, '/public/index.html'))
 });
 
 app.get('/notes', (req, res) => {
-    res.sendFile(path.join(__dirname, '/Develop/public/notes.html'))
+    res.sendFile(path.join(__dirname, '/public/notes.html'))
 });
 
 app.listen(PORT, () => {
