@@ -139,6 +139,7 @@ const renderNoteList = async (notes) => {
   // Returns HTML element with or without a delete button
   const createLi = (text, delBtn = true) => {
     const liEl = document.createElement('li');
+    // const liEl = document.createElement('button');
     liEl.classList.add('list-group-item');
 
     const spanEl = document.createElement('span');
@@ -189,6 +190,7 @@ if (window.location.pathname === '/notes') {
   newNoteBtn.addEventListener('click', handleNewNoteView);
   clearBtn.addEventListener('click', renderActiveNote);
   noteForm.addEventListener('input', handleRenderBtns);
+  newNoteBtn.addEventListener('click', handleNoteView);
 }
 
 getAndRenderNotes();
