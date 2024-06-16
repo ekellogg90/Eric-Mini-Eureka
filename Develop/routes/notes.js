@@ -4,11 +4,12 @@ const { readAndAppend, readFromFile } = require('../helpers/fsUtils');
 
 // GET route for grabbing notes
 notes.get('/', (req, res) => {
-    readFromFile('../../../db/db.json').then((data) => res.json(JSON.parse(data)))  
+    readFromFile('./db/db.json').then((data) => // this path might need to go up another level
+        res.json(JSON.parse(data)))  
 });
 // POST route for adding notes
 notes.post('/', (req, res) => {
-    const { title, text } = req.body;
+    const {title, text} = req.body;
 
 if (title && text) {
     const newNote = {
@@ -17,7 +18,7 @@ if (title && text) {
         note_id: uuidv4(),
     };
 
-    readAndAppend(newNote, '../../../db/db.json');
+    readAndAppend(newNote, './db/db.json'); // same here ^
 
     const response = {
         status: 'success',
